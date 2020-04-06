@@ -1,0 +1,11 @@
+bed:
+#CARDIAC
+ FH: '/data/bedFiles/FH/Twist_FH_screening.bed'
+
+reference:
+ human_decoy: '/data/humanGenome/hs37d5.fa'
+
+software:
+ picard_SortSam: '/opt/software/picard-tools-1.96/SortSam.jar'
+ mark_duplicates: '/opt/software/picard-tools-1.96/MarkDuplicates.jar'
+ gatk: '/opt/software/GenomeAnalysisTK-3.8-1-0/GenomeAnalysisTK.jar'
