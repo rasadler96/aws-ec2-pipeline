@@ -6,4 +6,4 @@ reference:
  human_decoy: '/usr/ubuntu/aws-ec2-pipeline//reference/hs37d5.fa'
 
 software:
- gatk_Picard: '/opt/software/GenomeAnalysisTK-4.1.6.0/gatk'
+ gatk_picard: '/opt/software/GenomeAnalysisTK-4.1.6.0/gatk'
