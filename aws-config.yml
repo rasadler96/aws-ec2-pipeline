@@ -1,11 +1,9 @@
 bed:
 #CARDIAC
- FH: '/data/bedFiles/FH/Twist_FH_screening.bed'
+ FH: '/usr/ubuntu/aws-ec2-pipeline/reference/FH.bed'
 
 reference:
- human_decoy: '/data/humanGenome/hs37d5.fa'
+ human_decoy: '/usr/ubuntu/aws-ec2-pipeline//reference/hs37d5.fa'
 
 software:
- picard_SortSam: '/opt/software/picard-tools-1.96/SortSam.jar'
- mark_duplicates: '/opt/software/picard-tools-1.96/MarkDuplicates.jar'
- gatk: '/opt/software/GenomeAnalysisTK-3.8-1-0/GenomeAnalysisTK.jar'
+ gatk_Picard: '/opt/software/GenomeAnalysisTK-4.1.6.0/gatk'
