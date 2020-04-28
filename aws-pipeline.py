@@ -9,7 +9,7 @@ import decimal
 import configparser
 import time
 
-config = yaml.safe_load(open("/data/cfg/aws.yml"))
+config = yaml.safe_load(open("aws-config.yml"))
 
 
 #REFERENCE
@@ -51,14 +51,14 @@ if os.path.isdir(run_directory):
 
         fastq_1 = input_file
         fastq_2 = input_file.replace('L001_R1_001', 'L001_R2_001')
-        reference = "/usr/ubuntu/aws-ec2-pipeline/reference/hs37d5"
+        reference = "/home/ubuntu/aws-ec2-pipeline/reference/hs37d5.fa"
 
         basename_cols = extras[0].split('_')
         sample_id = basename_cols[0]+"_"+basename_cols[1]+"_"+basename_cols[2]
 
         lane_id = sample_id
 
-        read_group = "@RG\tID:%s\tPL:ILLUMINA\tSM:%s\tLB:library\tPU:platform_unit" % (lane_id, sample_id)
+        read_group = "@RG\\tID:%s\\tPL:ILLUMINA\\tSM:%s\\tLB:library\\tPU:platform_unit" % (lane_id, sample_id)
 
         sam_file = output_file
         log_file = extras[1]
@@ -74,7 +74,7 @@ if os.path.isdir(run_directory):
         bam, sam2bam_log, sorted_bam, picardSort_log = extras
         #the command line statement we want to execute
         os.system("samtools view -bS %s > %s 2>%s" % (input_file, bam, sam2bam_log))
-        os.system("%s --java-options "-Xmx2g -Djava.io.tmpdir=/tmp" SortSam INPUT=%s OUTPUT=%s SORT_ORDER=coordinate TMP_DIR=/tmp &>%s" % (gatk_picard, bam, sorted_bam, picardSort_log))
+        os.system("%s --java-options '-Xmx2g -Djava.io.tmpdir=/tmp' SortSam -I %s -O %s -SO coordinate --TMP_DIR /tmp &>%s" % (gatk_picard, bam, sorted_bam, picardSort_log))
         os.system("samtools index %s &>%s" % (extras[2], index_log))
 
     @transform(index_bam,
@@ -84,7 +84,7 @@ if os.path.isdir(run_directory):
                 )
     def dedup_bam(input_file, output_files):
         dedup_bam, picard_log, picard_metrics = output_files
-        os.system('%s --java-options "-Xmx8g -Djava.io.tmpdir=/tmp" MarkDuplicates INPUT=%s OUTPUT=%s METRICS_FILE=%s TMP_DIR=/tmp &>%s' % (gatk_picard, input_file[0], dedup_bam, picard_metrics, picard_log))
+        os.system('%s --java-options "-Xmx8g -Djava.io.tmpdir=/tmp" MarkDuplicates -I %s -O %s --METRICS_FILE %s --TMP_DIR /tmp &>%s' % (gatk_picard, input_file[0], dedup_bam, picard_metrics, picard_log))
 
     #index duplicated marked BAM
     @follows(dedup_bam)
@@ -98,7 +98,7 @@ if os.path.isdir(run_directory):
         input_bam = inputs[0]
         '''Call variants with GATK HaplotypeCaller'''
         bed = fh_bed
-        os.system('%s HaplotypeCaller -A Coverage -R %s -I %s -L %s -O %s &>%s' (gatk_jar, human_decoy, input_bam, bed, output_file, log_file))
+        os.system('%s HaplotypeCaller -A Coverage -R %s -I %s -L %s -O %s &>%s' % (gatk_picard, human_decoy, input_bam, bed, output_file, log_file))
 
 else:
     sys.stderr.write("The directory does not exist! Please check and try again\n")
