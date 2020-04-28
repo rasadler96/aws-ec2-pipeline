@@ -6,7 +6,7 @@ chardet==3.0.4
 configparser==4.0.2
 cruzdb==0.5.6
 datacache==1.1.5
-Django==2.2.6
+Django==2.2.10
 gtfparse==1.2.0
 idna==2.8
 memoized-property==1.0.3
@@ -17,7 +17,7 @@ pandas==0.25.1
 progressbar33==2.4
 pyensembl==1.8.3
 PyMySQL==0.9.3
-pysam==0.15.3
+pysam
 python-dateutil==2.8.0
 pytz==2019.3
 PyVCF==0.6.8
