@@ -1,9 +1,9 @@
 bed:
 #CARDIAC
- FH: '/usr/ubuntu/aws-ec2-pipeline/reference/FH.bed'
+ FH: '/home/ubuntu/aws-ec2-pipeline/reference/FH.bed'
 
 reference:
- human_decoy: '/usr/ubuntu/aws-ec2-pipeline//reference/hs37d5.fa'
+ human_decoy: '/home/ubuntu/aws-ec2-pipeline/reference/hs37d5.fa'
 
 software:
- gatk_picard: '/opt/software/GenomeAnalysisTK-4.1.6.0/gatk'
+        gatk_picard: '/opt/software/gatk-4.1.6.0/gatk'
