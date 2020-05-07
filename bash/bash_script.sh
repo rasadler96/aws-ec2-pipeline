@@ -28,6 +28,7 @@ rm -r gatk-4.1.6.0.zip
 cd /home/ubuntu
 git clone https://github.com/Becky-Sadler/aws-ec2-pipeline.git
 cd aws-ec2-pipeline
+rm -r bash
 mkdir run-directory reference
 mv FH.bed reference 
 
