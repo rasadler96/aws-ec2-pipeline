@@ -6,15 +6,6 @@ apt-get update
 
 apt install -y wget gcc libssl-dev make unzip openjdk-8-jdk git-all bwa samtools awscli virtualenv mysql-client mysql-server python3-dev
 
-# install python (if not shipped with os) 
-# cd /usr/src
-# sudo wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
-#sudo tar -xvf Python-3.6.6.tar.xz
-#cd Python-3.6.6
-#sudo ./configure --prefix=/opt/python3
-#sudo make altinstall
-#sudo ln -s /opt/python3/bin/python3.6 /usr/bin/python3.6
-
 cd /opt 
 mkdir software 
 cd software 
@@ -28,7 +19,6 @@ rm -r gatk-4.1.6.0.zip
 cd /home/ubuntu
 git clone https://github.com/Becky-Sadler/aws-ec2-pipeline.git
 cd aws-ec2-pipeline
-rm -r bash
 mkdir run-directory reference
 mv FH.bed reference 
 
@@ -47,3 +37,9 @@ samtools faidx hs37d5.fa
 # index for use with BWA
 
 bwa index hs37d5.fa
+
+# remove bash script
+
+cd ..
+
+rm -r bash
