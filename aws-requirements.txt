@@ -6,7 +6,6 @@ chardet==3.0.4
 configparser==4.0.2
 cruzdb==0.5.6
 datacache==1.1.5
-Django==2.2.10
 gtfparse==1.2.0
 idna==2.8
 memoized-property==1.0.3
