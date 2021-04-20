@@ -20,7 +20,7 @@ pysam
 python-dateutil==2.8.0
 pytz==2019.3
 PyVCF==0.6.8
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 ruffus==2.8.3
 serializable==0.1.1
