@@ -11,7 +11,7 @@ idna==2.8
 memoized-property==1.0.3
 mock==3.0.5
 mysqlclient==1.4.4
-numpy==1.17.2
+numpy==1.22.0
 pandas==0.25.1
 progressbar33==2.4
 pyensembl==1.8.3
